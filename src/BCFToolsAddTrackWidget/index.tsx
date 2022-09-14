@@ -9,7 +9,7 @@ export default (pm: PluginManager) => {
   pm.addAddTrackWorkflowType(
     () =>
       new AddTrackWorkflowType({
-        name: 'Unindexed variant track',
+        name: 'Raw variant track',
         ReactComponent: BCFToolsAddTrackWidget,
         stateModel: types.model({}),
       }),

@@ -48,7 +48,7 @@ This plugin adds a new add track workflow.
 
 1. Navigate: Add > Linear genome view > Open > Open track selector > + icon button > Add track
 
-2. In the topmost dropdown menu select "Unindexed variant track".
+2. In the topmost dropdown menu select "Raw variant track".
 
 3. Choose a local `.vcf` file to process
 

@@ -3,22 +3,8 @@ import { Button, Paper, TextField } from '@mui/material'
 import { makeStyles } from 'tss-react/mui'
 import { getSession } from '@jbrowse/core/util'
 import { AddTrackModel } from '@jbrowse/plugin-data-management'
-import {
-  LocalPathLocation,
-  FileLocation,
-  BlobLocation,
-} from '@jbrowse/core/util/types'
+import { LocalPathLocation, FileLocation } from '@jbrowse/core/util/types'
 import LocalFileChooser from './LocalFileChooser'
-
-function isLocalPathLocation(
-  location: FileLocation,
-): location is LocalPathLocation {
-  return 'localPath' in location
-}
-
-function isBlobLocation(location: FileLocation): location is BlobLocation {
-  return 'blobId' in location
-}
 
 const useStyles = makeStyles()((theme) => ({
   textbox: {
@@ -98,7 +84,7 @@ export default function BCFToolsAddTrackWidget({
             : ''
 
           execute(
-            `echo ${localPath} && bcftools sort "${localPath}" > "${localPath}.sorted.vcf" && bgzip "${localPath}.sorted.vcf" && tabix "${localPath}.sorted.vcf.gz"`,
+            `bcftools sort "${localPath}" > "${localPath}.sorted.vcf" && bgzip "${localPath}.sorted.vcf" && tabix "${localPath}.sorted.vcf.gz"`,
             () => {
               model.setTrackData({
                 localPath: `${localPath}.sorted.vcf.gz`,
@@ -109,9 +95,6 @@ export default function BCFToolsAddTrackWidget({
                 localPath: `${localPath}.sorted.vcf.gz.tbi`,
                 locationType: 'LocalPathLocation',
               })
-
-              // @ts-ignore
-              console.log(model.indexTrackData.localPath)
 
               // @ts-ignore
               session.addTrackConf({
