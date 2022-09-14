@@ -42,8 +42,8 @@
   ],
   "plugins": [
     {
-      "name": "Template",
-      "url": "http://localhost:9000/dist/jbrowse-plugin-template.umd.development.js"
+      "name": "DesktopTools",
+      "url": "http://localhost:9000/dist/jbrowse-plugin-desktop-tools.umd.development.js"
     }
   ],
   "defaultSession": {
