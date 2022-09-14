@@ -68,6 +68,7 @@ export default function BCFToolsAddTrackWidget({
       <LocalFileChooser
         location={model.trackData}
         setLocation={model.setTrackData}
+        setName={setTrackName}
       />
       <TextField
         value={trackName}

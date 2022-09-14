@@ -18,9 +18,10 @@ const useStyles = makeStyles()((theme) => ({
 function LocalFileChooser(props: {
   location?: FileLocation
   setLocation: Function
+  setName: Function
 }) {
   const { classes } = useStyles()
-  const { location, setLocation } = props
+  const { location, setLocation, setName } = props
   const [filename, setFilename] = useState(``)
 
   const needToReload =
@@ -48,6 +49,7 @@ function LocalFileChooser(props: {
                     setLocation(storeBlobLocation({ blob: file }))
                   }
                   setFilename((file as File & { path: string }).path)
+                  setName(file.name)
                 }
               }}
             />
