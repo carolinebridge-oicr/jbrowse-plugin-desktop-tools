@@ -4,6 +4,7 @@ import { makeStyles } from 'tss-react/mui'
 import { getSession } from '@jbrowse/core/util'
 import { AddTrackModel } from '@jbrowse/plugin-data-management'
 import { LocalPathLocation, FileLocation } from '@jbrowse/core/util/types'
+import { isElectron } from '@jbrowse/core/util'
 import LocalFileChooser from './LocalFileChooser'
 
 const useStyles = makeStyles()((theme) => ({
@@ -21,7 +22,7 @@ const useStyles = makeStyles()((theme) => ({
   },
 }))
 
-const exec = require('child_process').exec
+const exec = isElectron ? require('child_process').exec : () => {}
 
 function execute(command: any, callback: any) {
   exec(command, (error: any, stdout: any, stderr: any) => {
